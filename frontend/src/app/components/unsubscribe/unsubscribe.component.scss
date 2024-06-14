@@ -1,0 +1,12 @@
+div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: LibreFranklin;
+}
+
+button {
+    font-family: LibreFranklin;
+    background-color: var(--secondary) !important;
+    color: var(--background) !important;
+}

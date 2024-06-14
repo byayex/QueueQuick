@@ -1,0 +1,67 @@
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: LibreFranklin;
+    height: 100%;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    font-family: LibreFranklin;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.contactMethod {
+    width: 100%;
+}
+
+.channel_container {
+    cursor: pointer;
+    border-radius: 10px;
+    height: 100px;
+    width: 100px;
+    display: grid;
+    padding: 5px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.5fr;
+    justify-items: center;
+
+    img {
+        object-fit: cover;
+        width: 50%;
+    }
+
+    h3 {
+        margin: 0;
+    }
+}
+
+.submitButton {
+    margin-top: 20px;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}

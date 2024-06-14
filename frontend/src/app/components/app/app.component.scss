@@ -1,0 +1,28 @@
+:root {
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+::ng-deep .mdc-snackbar {
+    .mdc-button__label {
+        color: var(--secondary);
+    }
+}
+
+::ng-deep .mat-mdc-slide-toggle.mat-accent {
+    --mdc-switch-selected-focus-state-layer-color: var(--secondary) !important;
+    --mdc-switch-selected-handle-color: var(--secondary) !important;
+    --mdc-switch-selected-hover-state-layer-color: var(--secondary) !important;
+    --mdc-switch-selected-pressed-state-layer-color: var(--secondary) !important;
+    --mdc-switch-selected-focus-handle-color: var(--secondary-50) !important;
+    --mdc-switch-selected-hover-handle-color: var(--secondary-50) !important;
+    --mdc-switch-selected-pressed-handle-color: var(--secondary-50) !important;
+    --mdc-switch-selected-focus-track-color: var(--secondary) !important;
+    --mdc-switch-selected-hover-track-color: var(--secondary) !important;
+    --mdc-switch-selected-pressed-track-color: var(--secondary) !important;
+    --mdc-switch-selected-track-color: var(--secondary) !important;
+}

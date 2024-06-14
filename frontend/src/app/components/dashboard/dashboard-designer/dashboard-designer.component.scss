@@ -1,0 +1,81 @@
+.content {
+    padding-left: 20px;
+    display: flex;
+    width: calc(100% - 20px);
+    height: 100%;
+    font-family: LibreFranklin;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-areas: "select select select"
+        "settings display display";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1fr;
+    gap: 10px;
+}
+
+.campaign_selection {
+    grid-area: select;
+    height: fit-content;
+    width: 50%;
+}
+
+.color-picker-container  {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 1fr;
+    width: 80%;    
+    p {
+        margin: 0;
+        font-size: 14px;
+    }
+    input {
+        border-radius: 10px;
+        border-style: solid;
+        border-color: var(--secondary-50);
+        cursor: pointer;
+    }
+}
+
+.settings {
+    grid-area: settings;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+::ng-deep .mdc-label {
+    font-family: LibreFranklin !important;
+}
+input {
+    font-family: LibreFranklin;
+}
+mat-label {
+    font-family: LibreFranklin;
+}
+
+.preview {
+    margin: 10px;
+    grid-area: display;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 75% 15%;
+    margin-bottom: 20px;
+    justify-items: center;
+}
+
+.linkfield {
+    height: fit-content;
+    width: 80%;
+}
+
+.livepreview {
+    border-color: var(--secondary);
+    border-style: solid;
+    border-radius: 5px;
+    height: 80%;
+    width: 80%;
+}

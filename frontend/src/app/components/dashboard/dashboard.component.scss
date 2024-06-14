@@ -1,0 +1,104 @@
+:host {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 1fr;
+    background-color: var(--background);
+}
+
+.sidenav {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    min-width: 200px;
+    border-right: 1px solid var(--text-50);
+}
+
+.sidenav-logo {
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px auto;
+    gap: 15px;
+    padding: 20px;
+
+    .logo {
+        width: 100%;
+    }
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+    margin: 10px;
+}
+
+.profile_navitem {
+    margin-top: auto;
+    margin-bottom: 20px;
+    h2 {
+        font-size: 150%;
+    }
+}
+
+.navitem_btn {
+    overflow: hidden;
+    z-index: 0;
+    padding: 7.5px;
+    height: fit-content;
+    align-items: center;
+    justify-items: center;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 1fr;
+
+    h2 {
+        font-family: LibreFranklin;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .profile_image {
+        max-width: 100%;
+        height: auto;
+        z-index: 1;
+    }
+
+    user-select: none;
+    transition: all 0.25s ease-in;
+    cursor: pointer;
+
+    background-color: transparent;
+}
+.navitem_btn:active {
+    transform: scale(0.95)
+}
+
+.navitem_btn_active {
+    h2 {
+        transition: all 0.3s;
+        color: var(--background)
+    }
+
+    mat-icon {
+        transition: all 0.3s;
+        color: var(--background)
+    }
+}
+
+.navitem_highlight {
+    position: absolute;
+    width: 0;
+    left: 0;
+    background-color: var(--secondary);
+    transition: all 0.3s;
+    border-radius: var(--border-radius);
+}
+
+.main {
+    overflow: hidden;
+}

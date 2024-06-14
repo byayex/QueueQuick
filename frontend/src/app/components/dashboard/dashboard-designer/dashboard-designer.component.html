@@ -1,0 +1,60 @@
+<dashboard-template class="content" title_str="Designer" description="Design your iframe"
+  backgroundColor="var(--background)">
+
+  <div class="main-grid">
+
+    <mat-form-field class="campaign_selection">
+      <mat-label>Select campaign</mat-label>
+      <mat-select matNativeControl [(value)]="selectedCampaign">
+        <mat-option *ngFor="let element of data" (click)="newSelect(element.id)" [value]="element.id">{{ element['title'] }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="settings" *ngIf="selectedCampaign">
+      <mat-slide-toggle class="toggle" labelPosition="before" [(ngModel)]="showTitle">Show Title</mat-slide-toggle>
+      <mat-slide-toggle class="toggle" labelPosition="before" [(ngModel)]="showDescription">Show Description</mat-slide-toggle>
+      <div class="color-picker-container">
+        <p>Background Color:</p>
+        <input [(colorPicker)]="backgroundColor" readonly [style.background]="backgroundColor"/>
+      </div>
+      <div class="color-picker-container">
+        <p>Button Background Color:</p>
+        <input [(colorPicker)]="buttonColor" readonly [style.background]="buttonColor" maxlength="0"/>
+      </div>
+      <div class="color-picker-container">
+        <p>Text Color:</p>
+        <input [(colorPicker)]="textColor" readonly [style.background]="textColor" maxlength="0"/>
+      </div>
+      <div class="color-picker-container">
+        <p>Button Text Color:</p>
+        <input [(colorPicker)]="buttonTextColor" readonly [style.background]="buttonTextColor" maxlength="0"/>
+      </div>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Border Radius (in px)</mat-label>
+        <input matInput [(ngModel)]="buttonBorderRadius">
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Button Text</mat-label>
+        <input matInput maxlength="50" [(ngModel)]="buttonTxt">
+      </mat-form-field>
+    </div>
+
+    <div class="preview" *ngIf="selectedCampaign">
+      <h2>Live Preview</h2>
+      <div class="livepreview">
+        <iframe-comp class="preview-iframe" [campaign]="selectedCampaign" [backgroundColor]="backgroundColor" [buttonBorderRadius]="buttonBorderRadius" [showTitle]="showTitle"
+        [showDescription]="showDescription" [buttonColor]="buttonColor" [buttonTxt]="buttonTxt" [textColor]="textColor" [buttonTextColor]="buttonTextColor">
+        </iframe-comp>
+      </div>
+      <mat-form-field subscriptSizing="dynamic" class="linkfield">
+        <mat-label>Link</mat-label>
+        <input matInput readonly [(ngModel)]="link">
+        <button mat-icon-button matSuffix (click)="copyToClipboard()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+</dashboard-template>

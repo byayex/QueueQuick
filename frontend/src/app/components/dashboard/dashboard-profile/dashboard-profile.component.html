@@ -1,0 +1,76 @@
+<dashboard-template class="content" title_str="Profile" description="See and manage your current profile settings."
+  backgroundColor="var(--background)">
+
+  <div class="main">
+    <div class="default_row">
+      <div class="default_select">
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="username" maxlength="10" minlength="3">
+        </mat-form-field>
+        <button mat-raised-button [style.opacity]="usernameNotNew() ? '0' : '100'" [disabled]="usernameNotNew()"
+          (click)="saveUsername()">
+          Save
+        </button>
+      </div>
+      <div class="default_select">
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-label>E-Mail</mat-label>
+          <input matInput [(ngModel)]="email" maxlength="320" minlength="3" readonly>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button (click)="clickLogout()">
+        Logout!
+      </button>
+    </div>
+    <div class="channel_part">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle *ngIf="channel_enabled.email != ''">
+          <mat-expansion-panel-header>
+            <mat-panel-title [ngStyle]="{ 'font-family': 'LibreFranklin'}">
+              Email Settings {{ compareJsonObjects(email_settings, getDefaultEmail()) ? '(not active)' : '(active)' }}
+            </mat-panel-title>
+            <mat-panel-description [ngStyle]="{ 'font-family': 'LibreFranklin'}">
+              Opening this in presence of others may expose sensitive data!
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="email_container">
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Host</mat-label>
+              <input matInput [(ngModel)]="email_settings.host">
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Port</mat-label>
+              <input (keypress)="numberOnly($event)" matInput maxlength="10" [(ngModel)]="email_settings.port">
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Username</mat-label>
+              <input matInput [(ngModel)]="email_settings.username">
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Password</mat-label>
+              <input matInput [(ngModel)]="email_settings.password">
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Sender Address (email)</mat-label>
+              <input matInput [(ngModel)]="email_settings.sender_address">
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Sender Name</mat-label>
+              <input matInput [(ngModel)]="email_settings.sender_name">
+            </mat-form-field>
+            <div class="fullwidth">
+              <button mat-raised-button class="save" [ngStyle]="{ 'font-family': 'LibreFranklin'}" (click)="saveEmailData()">
+                Save
+              </button>
+              <button mat-raised-button class="remove" [ngStyle]="{ 'font-family': 'LibreFranklin'}" (click)="removeEmailData()" *ngIf="!compareJsonObjects(email_settings, getDefaultEmail())">
+                Delete and deactivate the Channel
+              </button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+</dashboard-template>

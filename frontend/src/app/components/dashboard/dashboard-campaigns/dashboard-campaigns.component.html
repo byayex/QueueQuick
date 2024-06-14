@@ -1,0 +1,71 @@
+<dashboard-template class="content" title_str="Campaigns" description="Manage your campaigns."
+  backgroundColor="var(--background)">
+
+  <div class="main_content">
+
+    <table mat-table [dataSource]="data" class="mat-elevation-z8 table-div">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="current_entries">
+        <th mat-header-cell *matHeaderCellDef> Current Entries </th>
+        <td mat-cell *matCellDef="let element"> {{element.current_entries}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Active </th>
+        <td mat-cell *matCellDef="let element"> {{element.active ? 'Yes' : 'No'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="manage">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-mini-fab class="mat_icon_manage" aria-label="Edit the campaign" [matMenuTriggerFor]="manageMenu">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <mat-menu #manageMenu="matMenu">
+            <button mat-menu-item (click)="loadCampaignIntoEdit(element.id)">Edit</button>
+            <button mat-menu-item (click)="deleteCampaign(element.id)">Delete</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" sticky></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div class="manage_campaigns">
+
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Title</mat-label>
+        <input matInput maxlength="100" minlength="3" required [(ngModel)]="title">
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Description</mat-label>
+        <input matInput maxlength="300" [(ngModel)]="description">
+      </mat-form-field>
+      <mat-slide-toggle class="toggle" [(ngModel)]="active">Active</mat-slide-toggle>
+
+      <button mat-raised-button (click)="submitClick()" class="actionbuttons">
+        {{currentSelectedId != '' ? 'Edit' : 'Create new'}} campaign
+      </button>
+      <button mat-raised-button (click)="abortEdit()" class="actionbuttons" [ngClass]="{'hidden': currentSelectedId == ''}">
+        Abort Edit
+      </button>
+    </div>
+  </div>
+
+</dashboard-template>

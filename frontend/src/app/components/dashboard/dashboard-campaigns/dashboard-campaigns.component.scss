@@ -1,0 +1,72 @@
+.content {
+    padding-left: 20px;
+    display: flex;
+    width: calc(100% - 20px);
+    height: 100%;
+    font-family: LibreFranklin;
+}
+
+.main_content {
+    display: grid;
+    align-items: start;
+    justify-items: center;
+    justify-content: center;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 0.6fr;
+}
+
+.table-div {
+    display: block;
+    width: 100%;
+    max-height: 750px;
+    overflow-x: auto;
+    table-layout: fixed;
+}
+
+.toggle {
+    color: var(--secondary) !important;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.actionbuttons {
+    background-color: var(--secondary-50) !important;
+}
+
+.mat_icon_manage {
+    background-color: var(--secondary-50);
+}
+
+.manage_campaigns {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 15px;
+}
+
+.mat-column-title {
+    word-break: break-word;
+    width: 40% !important;
+}
+
+.mat-column-description {
+    word-break: break-word;
+    width: 40% !important;
+}
+
+.mat-column-current_entries {
+    word-break: break-word;
+    width: 10% !important;
+}
+
+.mat-column-active {
+    word-break: break-word;
+    width: 10% !important;
+}
+
+.mat-column-manage {
+    word-break: break-word;
+    width: 5% !important;
+}

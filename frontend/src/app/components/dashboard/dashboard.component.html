@@ -1,0 +1,36 @@
+<div #sideNav class="sidenav">
+    <div class="sidenav-logo">
+        <img class="logo" src="../../../assets/logo-light.webp">
+        <mat-divider class="divider"></mat-divider>
+    </div>
+    <div class="navigation">
+        <div class="navitem_highlight" [style.top]="highlightTop" [style.height]="highlightHeight"
+            [style.width]="highlightWidth" [style.left]="highlightLeft"></div>
+        <a id="dashboard" class="navitem_btn" [ngClass]="{'navitem_btn_active': getCurrentNavItem() === 'dashboard'}"
+            (click)="selectNavItem('dashboard')">
+            <mat-icon>dashboard</mat-icon>
+            <h2>Dashboard</h2>
+        </a>
+        <a id="campaigns" class="navitem_btn" [ngClass]="{'navitem_btn_active': getCurrentNavItem() === 'campaigns'}"
+            (click)="selectNavItem('campaigns')">
+            <mat-icon>campaign</mat-icon>
+            <h2>Campaigns</h2>
+        </a>
+        <a id="designer" class="navitem_btn" [ngClass]="{'navitem_btn_active': getCurrentNavItem() === 'designer'}"
+            (click)="selectNavItem('designer')">
+            <mat-icon>palette</mat-icon>
+            <h2>Designer</h2>
+        </a>
+        <a id="profile" class="navitem_btn profile_navitem"
+            [ngClass]="{'navitem_btn_active': getCurrentNavItem() === 'profile'}" (click)="selectNavItem('profile')">
+            <mat-icon>person</mat-icon>
+            <h2>{{pb.returnModelData('username')}}</h2>
+        </a>
+    </div>
+</div>
+<div class="main">
+    <dashboard-main *ngIf="getCurrentNavItem() == 'dashboard'"></dashboard-main>
+    <dashboard-campaigns *ngIf="getCurrentNavItem() == 'campaigns'"></dashboard-campaigns>
+    <dashboard-designer *ngIf="getCurrentNavItem() == 'designer'"></dashboard-designer>
+    <dashboard-profile *ngIf="getCurrentNavItem() == 'profile'"></dashboard-profile>
+</div>
