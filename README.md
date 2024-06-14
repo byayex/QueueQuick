@@ -6,6 +6,14 @@ Welcome to the QueueQuick repository! QueueQuick is a SaaS project aimed at prov
 
 QueueQuick started as a side hustle with the vision of offering versatile waitlist solutions to entrepreneurs. Although the project is nearly finished, I decided to shift my focus to other business ideas. Therefore, I've made this project public for anyone who might find it useful or wants to continue its development.
 
+## ToDo (The following things were not completed by me)
+
+- Multi Channel Support (its not complicated to create new channale)
+- Homepage (Landing Page)
+- Send Notifications (Frontend)
+- Statistics in the Dashboard
+- ...
+
 ## Getting Started
 
 ### Backend
