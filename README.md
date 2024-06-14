@@ -22,7 +22,7 @@ go run main.go api.go build
 ```
 This will build an executable for production use.
 
-#### Frontend
+### Frontend
 
 To start the frontend, use the following commands:
 
