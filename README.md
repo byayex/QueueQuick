@@ -14,6 +14,7 @@ I was not caring about code style and stuff so dont judge me :)
 - Homepage (Landing Page)
 - Send Notifications (Frontend)
 - Statistics in the Dashboard
+- Implementing the fixed unsubscribe link in all messages (regardless of the channel)
 - ...
 
 ## Getting Started
