@@ -4,7 +4,7 @@ Welcome to the QueueQuick repository! QueueQuick is a SaaS project aimed at prov
 
 ## Project Background
 
-QueueQuick started as a side hustle with the vision of offering versatile waitlist solutions to entrepreneurs. Although the project is nearly finished, I decided to shift my focus to other business ideas. Therefore, I've made this project public for anyone who might find it useful or wants to continue its development.
+QueueQuick started as a side hustle with the vision of offering versatile waitlist solutions to entrepreneurs. Although the project is nearly finished, I decided to shift my focus to other business ideas. Therefore, I've made this project public for anyone who might find it useful or wants to contribute.
 
 I was not caring about code style and stuff so dont judge me :)
 
