@@ -2,15 +2,6 @@
 
 Welcome to the QueueQuick repository! QueueQuick is a SaaS project aimed at providing entrepreneurs with the ability to create waitlists not just for email, but for multiple other channels like WhatsApp and more.
 
-## ToDo (The following things were not completed by me)
-
-- Multi Channel Support (its not complicated to create new channale)
-- Homepage (Landing Page)
-- Send Notifications (Frontend)
-- Statistics in the Dashboard
-- Implementing the fixed unsubscribe link in all messages (regardless of the channel)
-- ...
-
 ## Getting Started
 
 ### Backend

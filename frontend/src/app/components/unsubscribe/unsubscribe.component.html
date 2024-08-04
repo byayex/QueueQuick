@@ -1,10 +1,19 @@
-<div *ngIf="removeState == 'pending'">
-    <h2>Do you really want to stop receiving news from us?</h2>
-    <button mat-raised-button (click)="unsubscribe()" [disabled]="buttonClicked">Yes, i want to unsubscribe!</button>
-</div>
-<div *ngIf="removeState == 'success'">
-    <h2>You got successfully removed from the list!</h2>
-</div>
-<div *ngIf="removeState == 'error'">
-    <h2>There was an error! Please try again later.</h2>
-</div>
+@switch (removeState) 
+{
+   @case ('pending') {
+    <div>
+        <h2>Do you really want to stop receiving news from us?</h2>
+        <button mat-raised-button (click)="unsubscribe()" [disabled]="buttonClicked">Yes, i want to unsubscribe!</button>
+    </div>
+   }
+   @case ('success') {
+    <div>
+        <h2>You got successfully removed from the list!</h2>
+    </div>
+   }
+   @default {
+    <div>
+        <h2>There was an error! Please try again later.</h2>
+    </div>
+   }
+}
