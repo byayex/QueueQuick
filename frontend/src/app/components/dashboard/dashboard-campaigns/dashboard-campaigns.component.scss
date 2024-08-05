@@ -6,6 +6,10 @@
     font-family: LibreFranklin;
 }
 
+.hidden {
+    opacity: 0;
+}
+
 .main_content {
     display: grid;
     align-items: start;

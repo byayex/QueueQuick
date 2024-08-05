@@ -3,7 +3,7 @@
 
   <div class="main_content">
 
-    <table mat-table [dataSource]="data" class="mat-elevation-z8 table-div">
+    <table mat-table [dataSource]="data" class="mat-elevation-z8 table-div" [ngClass]="{'hidden': data.length <= 0}">
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> ID </th>

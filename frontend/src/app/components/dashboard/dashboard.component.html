@@ -29,8 +29,19 @@
     </div>
 </div>
 <div class="main">
-    <dashboard-main *ngIf="getCurrentNavItem() == 'dashboard'"></dashboard-main>
-    <dashboard-campaigns *ngIf="getCurrentNavItem() == 'campaigns'"></dashboard-campaigns>
-    <dashboard-designer *ngIf="getCurrentNavItem() == 'designer'"></dashboard-designer>
-    <dashboard-profile *ngIf="getCurrentNavItem() == 'profile'"></dashboard-profile>
+    @switch (getCurrentNavItem()) 
+    {
+        @case ('dashboard') {
+            <dashboard-main></dashboard-main>
+        }
+        @case ('campaigns') {
+            <dashboard-campaigns></dashboard-campaigns>
+        }
+        @case ('designer') {
+            <dashboard-designer></dashboard-designer>
+        }
+        @case ('profile') {
+            <dashboard-profile></dashboard-profile>
+        }
+    }
 </div>

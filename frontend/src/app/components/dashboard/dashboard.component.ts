@@ -22,9 +22,9 @@ export class DashboardComponent {
 
     this.selectNavItem(storedNavItem);
 
-    setTimeout(() => {
+    window.onload = () => {
       this.scaleElementById(this.selectedNavItem);
-    }, 1_000)
+    };
   }
 
   @HostListener('window:resize')

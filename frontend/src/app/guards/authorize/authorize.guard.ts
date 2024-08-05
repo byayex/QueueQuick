@@ -12,7 +12,7 @@ export class AuthorizeGuard {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const isLoggedIn = this.pb.isLoggedIn();
-    
+
     if (!isLoggedIn) {
       this.router.navigate([this.routeURL.login()]);
       return false;
