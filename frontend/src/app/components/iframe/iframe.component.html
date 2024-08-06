@@ -1,40 +1,44 @@
 <div class="main" [ngStyle]="{ 'background-color': backgroundColor }">
     @if(!initialLoading){
-        
-        @if(campaginExists) {
-            <div class="step" *ngIf="currentStep == 0">
-                <h2 *ngIf="showTitle" [ngStyle]="{ 'color': textColor }">{{title}}</h2>
-                <p *ngIf="showDescription" [ngStyle]="{ 'color': textColor }">{{description}}</p>
-                <button mat-raised-button *ngIf="campaign != ''" (click)="clickJoinWaitlist()"
-                    [ngStyle]="{ 'color': buttonTextColor, 'background-color': buttonColor, 'border-radius.px': buttonBorderRadius }">{{buttonTxt}}</button>
-            </div>
-            <div class="step" *ngIf="currentStep == 1">
-                <h3 [ngStyle]="{ 'color': textColor }">Please choose a channel for the notifications.</h3>
-                <div *ngFor="let channel of availableChannels" class="channel_container" (click)="selectChannel(channel)"
-                    [ngStyle]="{ 'background-color': channel['hex_color']}">
-                    <img src="{{ returnChannelLogo(channel) }}" />
-                    <h3 class="noselect" [ngStyle]="{ 'color': channel['text_color']}">{{ channel["name"] }}</h3>
-                </div>
-            </div>
-            <div class="step" *ngIf="currentStep == 2">
-                <h3 [ngStyle]="{ 'color': textColor }">Please provide your {{ returnContactMethods() }}</h3>
-                <mat-form-field subscriptSizing="dynamic" class="contactMethod">
-                    <mat-label>{{ returnContactMethods() }}</mat-label>
-                    <input matInput [(ngModel)]="contactMethod" maxlength="75" autofocus (keyup.enter)="onSubmit()">
-                </mat-form-field>
-                <button mat-raised-button (click)="onSubmit()" class="submitButton">Submit</button>
-            </div>
-            <div class="step" *ngIf="currentStep == 3">
-                <h3 [ngStyle]="{ 'color': textColor }">You got added to the list!</h3>
-            </div>
-            <div class="step" *ngIf="currentStep == 4">
-                <h3 [ngStyle]="{ 'color': textColor }">Something went wrong! Please try again later.</h3>
-            </div>
+
+    @if(campaginExists) {
+    <div class="step" *ngIf="currentStep == 0">
+        <h2 *ngIf="showTitle" [ngStyle]="{ 'color': textColor }">{{title}}</h2>
+        <p *ngIf="showDescription" [ngStyle]="{ 'color': textColor }">{{description}}</p>
+        <button mat-raised-button *ngIf="campaign != ''" (click)="clickJoinWaitlist()"
+            [ngStyle]="{ 'color': buttonTextColor, 'background-color': buttonColor, 'border-radius.px': buttonBorderRadius }">{{buttonTxt}}</button>
+    </div>
+    <div class="step" *ngIf="currentStep == 1">
+        @if (availableChannels != null && availableChannels.length > 0) {
+        <h3 [ngStyle]="{ 'color': textColor }">Please choose a channel for the notifications.</h3>
+        <div *ngFor="let channel of availableChannels" class="channel_container" (click)="selectChannel(channel)"
+            [ngStyle]="{ 'background-color': channel['hex_color']}">
+            <img src="{{ returnChannelLogo(channel) }}" />
+            <h3 class="noselect" [ngStyle]="{ 'color': channel['text_color']}">{{ channel["name"] }}</h3>
+        </div>
         }
         @else {
-            <h2>Campaign does not exist</h2>
+            <h3>No channel configurations have been set.</h3>
         }
-
+    </div>
+    <div class="step" *ngIf="currentStep == 2">
+        <h3 [ngStyle]="{ 'color': textColor }">Please provide your {{ returnContactMethods() }}</h3>
+        <mat-form-field subscriptSizing="dynamic" class="contactMethod">
+            <mat-label>{{ returnContactMethods() }}</mat-label>
+            <input matInput [(ngModel)]="contactMethod" maxlength="75" autofocus (keyup.enter)="onSubmit()">
+        </mat-form-field>
+        <button mat-raised-button (click)="onSubmit()" class="submitButton">Submit</button>
+    </div>
+    <div class="step" *ngIf="currentStep == 3">
+        <h3 [ngStyle]="{ 'color': textColor }">You got added to the list!</h3>
+    </div>
+    <div class="step" *ngIf="currentStep == 4">
+        <h3 [ngStyle]="{ 'color': textColor }">Something went wrong! Please try again later.</h3>
+    </div>
+    }
+    @else {
+    <h2>Campaign does not exist</h2>
+    }
     }
     @else {
     <div class="loading-overlay">
