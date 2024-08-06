@@ -14,7 +14,7 @@ export class PocketbaseService {
     this.validateLogin();
   }
 
-  // This will try to
+  // This will try to validate the login and refresh the tokens
   async validateLogin() {
     if (!this.pb.authStore.isValid && this.pb.authStore.token) {
       await this.pb.collection('users').authRefresh();
