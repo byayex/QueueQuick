@@ -34,6 +34,9 @@ export class IframeComponent {
 
   public contactMethod: string = '';
 
+  public initialLoading: boolean = true;
+  public campaginExists: boolean = true;
+
   constructor(private route: ActivatedRoute, private snack: MatSnackBar, public pb: PocketbaseService) { }
 
   async ngOnInit(): Promise<void> {
@@ -54,7 +57,8 @@ export class IframeComponent {
         return;
       }
 
-    this.loadText();
+    await this.loadText();
+    this.initialLoading = false;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -77,6 +81,7 @@ export class IframeComponent {
 
     } catch (error) {
       this.snack.open('The campaign does not exist.', 'Close', { duration: 5000 })
+      this.campaginExists = false;
     } finally {
       this.textLoading = false;
     }

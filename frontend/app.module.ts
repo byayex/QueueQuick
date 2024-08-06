@@ -26,6 +26,7 @@ import { IframeComponent } from './src/app/components/iframe/iframe.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { UnsubscribeComponent } from './src/app/components/unsubscribe/unsubscribe.component';
 import { LoginComponent } from './src/app/components/login/login.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { LoginComponent } from './src/app/components/login/login.component';
     MatCheckboxModule,
     MatSlideToggleModule,
     MatSelectModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MatProgressSpinnerModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]

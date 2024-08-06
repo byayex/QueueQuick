@@ -138,36 +138,38 @@ export class DashboardDesignerComponent {
   }
 
   updateUI() {
-    let queryParams = [];
+    const url = new URL(this.templateLink + '/iframe');
+    const params = new URLSearchParams(url.search);
 
-    if (this.selectedCampaign != '') {
-      queryParams.push(`campaign=${this.selectedCampaign}`);
+    if (this.selectedCampaign !== '') {
+      params.set('campaign', this.selectedCampaign);
     }
     if (!this.showTitle) {
-      queryParams.push('showTitle=false');
+      params.set('showTitle', 'false');
     }
     if (!this.showDescription) {
-      queryParams.push('showDescription=false');
+      params.set('showDescription', 'false');
     }
     if (this.backgroundColor !== '') {
-      queryParams.push(`backgroundColor=${encodeURIComponent(this.backgroundColor)}`);
+      params.set('backgroundColor', this.backgroundColor);
     }
     if (this.buttonColor !== '#2596f8') {
-      queryParams.push(`buttonColor=${encodeURIComponent(this.buttonColor)}`);
+      params.set('buttonColor', this.buttonColor);
     }
     if (this.textColor !== '#000000') {
-      queryParams.push(`textColor=${encodeURIComponent(this.textColor)}`);
+      params.set('textColor', this.textColor);
     }
     if (this.buttonBorderRadius !== 10) {
-      queryParams.push(`buttonBorderRadius=${this.buttonBorderRadius}`);
+      params.set('buttonBorderRadius', this.buttonBorderRadius.toString());
     }
     if (this.buttonTextColor !== '#000000') {
-      queryParams.push(`buttonTextColor=${this.buttonTextColor}`);
+      params.set('buttonTextColor', this.buttonTextColor);
     }
     if (this.buttonTxt !== 'Join the Waitlist!') {
-      queryParams.push(`buttonTxt=${encodeURIComponent(this.buttonTxt)}`);
+      params.set('buttonTxt', this.buttonTxt);
     }
 
-    this.link = `${this.templateLink}/iframe?${queryParams.join('&')}`;
+    url.search = params.toString();
+    this.link = url.toString();
   }
 }
