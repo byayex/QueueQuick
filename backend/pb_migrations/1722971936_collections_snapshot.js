@@ -2,34 +2,6 @@
 migrate((db) => {
   const snapshot = [
     {
-      "id": "_pb_users_auth_",
-      "created": "2024-05-03 13:23:30.268Z",
-      "updated": "2024-05-24 14:25:33.183Z",
-      "name": "users",
-      "type": "auth",
-      "system": false,
-      "schema": [],
-      "indexes": [
-        "CREATE UNIQUE INDEX `idx_18LcoPa` ON `users` (`id`)"
-      ],
-      "listRule": "id = @request.auth.id",
-      "viewRule": "id = @request.auth.id",
-      "createRule": "",
-      "updateRule": "id = @request.auth.id",
-      "deleteRule": null,
-      "options": {
-        "allowEmailAuth": false,
-        "allowOAuth2Auth": true,
-        "allowUsernameAuth": false,
-        "exceptEmailDomains": null,
-        "manageRule": null,
-        "minPasswordLength": 8,
-        "onlyEmailDomains": null,
-        "onlyVerified": true,
-        "requireEmail": true
-      }
-    },
-    {
       "id": "g26pifh08bzdnfj",
       "created": "2024-05-07 12:10:08.724Z",
       "updated": "2024-05-24 14:25:33.184Z",
@@ -283,7 +255,7 @@ migrate((db) => {
     {
       "id": "qp2ztnt7bntpzt2",
       "created": "2024-05-13 11:39:23.489Z",
-      "updated": "2024-05-24 14:25:33.187Z",
+      "updated": "2024-08-06 17:17:46.742Z",
       "name": "entries",
       "type": "base",
       "system": false,
@@ -335,13 +307,43 @@ migrate((db) => {
           }
         }
       ],
-      "indexes": [],
+      "indexes": [
+        "CREATE INDEX `idx_sZ9CPKG` ON `entries` (`campaign`)"
+      ],
       "listRule": "campaign.owner.id = @request.auth.id",
       "viewRule": "campaign.owner.id = @request.auth.id",
       "createRule": "campaign.owner.id = @request.auth.id",
       "updateRule": "campaign.owner.id = @request.auth.id",
       "deleteRule": "campaign.owner.id = @request.auth.id",
       "options": {}
+    },
+    {
+      "id": "_pb_users_auth_",
+      "created": "2024-08-06 15:06:18.913Z",
+      "updated": "2024-08-06 15:08:05.694Z",
+      "name": "users",
+      "type": "auth",
+      "system": false,
+      "schema": [],
+      "indexes": [
+        "CREATE UNIQUE INDEX `idx_18LcoPa` ON `users` (`id`)"
+      ],
+      "listRule": "id = @request.auth.id",
+      "viewRule": "id = @request.auth.id",
+      "createRule": "",
+      "updateRule": "id = @request.auth.id",
+      "deleteRule": null,
+      "options": {
+        "allowEmailAuth": true,
+        "allowOAuth2Auth": true,
+        "allowUsernameAuth": false,
+        "exceptEmailDomains": null,
+        "manageRule": null,
+        "minPasswordLength": 8,
+        "onlyEmailDomains": null,
+        "onlyVerified": true,
+        "requireEmail": true
+      }
     }
   ];
 
