@@ -37,7 +37,7 @@ export class IframeComponent {
   public initialLoading: boolean = true;
   public campaginExists: boolean = true;
 
-  constructor(private route: ActivatedRoute, private snack: MatSnackBar, public pb: PocketbaseService) { }
+  constructor(private route: ActivatedRoute, private snack: MatSnackBar, public pb: PocketbaseService, private snackBar: MatSnackBar, ) { }
 
   async ngOnInit(): Promise<void> {
     this.route.queryParams.subscribe(params => {
@@ -51,11 +51,10 @@ export class IframeComponent {
       if (params['buttonBorderRadius']) this.buttonBorderRadius = parseInt(params['buttonBorderRadius']);
     });
 
-    if(localStorage.getItem(this.campaign))
-      {
-        this.currentStep = 3;
-        return;
-      }
+    if (localStorage.getItem(this.campaign)) {
+      this.currentStep = 3;
+      return;
+    }
 
     await this.loadText();
     this.initialLoading = false;
@@ -88,19 +87,23 @@ export class IframeComponent {
   }
 
   async clickJoinWaitlist() {
-    this.currentStep = 1
-    const channels = await this.pb.getAvailableChannels(this.campaign);
+    try {
+      this.currentStep = 1
+      const channels = await this.pb.getAvailableChannels(this.campaign);
 
-    let filter = '';
+      let filter = '';
 
-    channels.forEach((channel, index) => {
-      if (index > 0) {
-        filter += ' || ';
-      }
-      filter += `id = "${channel}"`;
-    });
+      channels.forEach((channel, index) => {
+        if (index > 0) {
+          filter += ' || ';
+        }
+        filter += `id = "${channel}"`;
+      });
 
-    this.availableChannels = await this.pb.get().collection('channels').getFullList({ filter: filter });
+      this.availableChannels = await this.pb.get().collection('channels').getFullList({ filter: filter });
+    } catch (error) {
+      this.snackBar.open('There was an error loading the channels. Please try again.', 'Close', { duration: 5000 })
+    }
   }
 
   returnChannelLogo(record: RecordModel) {
@@ -148,7 +151,7 @@ export class IframeComponent {
       this.currentStep = 4;
       setTimeout(() => {
         this.currentStep = 0;
-      },15_000)
+      }, 15_000)
     }
   }
 }

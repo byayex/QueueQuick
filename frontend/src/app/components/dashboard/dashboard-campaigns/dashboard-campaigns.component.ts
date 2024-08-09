@@ -29,6 +29,7 @@ export class DashboardCampaignsComponent {
         sort: '-created',
       });
     } catch (error: any) {
+      this.snackBar.open('There was an error loading the campaigns. Please try again later.', 'Close', { duration: 5000 })
       console.error(error);
     }
   }
@@ -76,17 +77,17 @@ export class DashboardCampaignsComponent {
 
       this.ngOnInit();
     } catch (error: any) {
-      this.snackBar.open(error, 'Close', { duration: 5000 })
+      this.snackBar.open(`An error occured while ${this.currentSelectedId == '' ? 'creating' : 'editing'} a campaign.`, 'Close', { duration: 5000 })
     }
   }
 
   async deleteCampaign(id: string) {
     try {
       await this.pb.get().collection('campaigns').delete(id);
-      this.snackBar.open('The campaign got deleted', 'Close', { duration: 500000 })
+      this.snackBar.open('The campaign got deleted', 'Close', { duration: 5000 })
       this.ngOnInit();
     } catch (error: any) {
-      this.snackBar.open(error, 'Close', { duration: 5000 })
+      this.snackBar.open('An error occured while deleting the campaign.', 'Close', { duration: 5000 })
     }
   }
 

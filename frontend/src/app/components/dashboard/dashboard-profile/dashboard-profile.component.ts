@@ -83,6 +83,7 @@ export class DashboardProfileComponent {
 
     } catch (error) {
       console.error(error);
+      this.snackBar.open('There was an error loading the channel data. Please try again later.', 'Close', { duration: 5000 })
     }
   }
 

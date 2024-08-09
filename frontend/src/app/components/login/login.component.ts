@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PocketbaseService } from '../../services/pocketbase/pocketbase.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteURLService } from '../../services/route-constants/route-url.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { RouteURLService } from '../../services/route-constants/route-url.servic
 })
 export class LoginComponent {
 
-  constructor(private pb: PocketbaseService, private router: Router, private routeUrl: RouteURLService){}
+  constructor(private pb: PocketbaseService, private router: Router, private snackBar: MatSnackBar, private routeUrl: RouteURLService){}
 
   async ngOnInit()
   {
@@ -22,8 +23,13 @@ export class LoginComponent {
 
   async login()
   {
-    await this.pb.get().collection('users').authWithOAuth2({ provider: 'google' });
-    this.router.navigate([this.routeUrl.dashboard()])
+    try {
+      await this.pb.get().collection('users').authWithOAuth2({ provider: 'google' });
+      this.router.navigate([this.routeUrl.dashboard()])
+    } catch (error) {
+      console.error(error)
+      this.snackBar.open('Login was not successful. Please try again.', 'Close', { duration: 5000 })
+    }
   }
 
 }

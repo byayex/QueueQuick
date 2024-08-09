@@ -109,6 +109,7 @@ export class DashboardDesignerComponent {
         sort: '-created',
       });
     } catch (error: any) {
+      this.snackBar.open('There was an error loading the campaigns. Please try again later.', 'Close', { duration: 5000 })
       console.error(error);
     }
   }
