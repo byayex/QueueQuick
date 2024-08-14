@@ -14,7 +14,7 @@ go run main.go api.go serve
 ```
 ##### Production
 ```bash
-go run main.go api.go build
+go build main.go api.go
 ```
 This will build an executable for production use.
 
