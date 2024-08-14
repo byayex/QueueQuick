@@ -1,6 +1,6 @@
 module QueueQuick
 
-go 1.22.2
+go 1.23.1
 
 require (
 	github.com/labstack/echo/v5 v5.0.0-20230722203903-ec5b858dab61
