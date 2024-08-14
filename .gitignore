@@ -22,6 +22,3 @@ go.work
 
 # Exclude application data
 pb_data/
-
-# Exclude package lock
-package-lock.json
