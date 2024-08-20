@@ -161,6 +161,4 @@ export class PocketbaseService {
   logout() {
     this.pb.authStore.clear();
   }
-
-
 }

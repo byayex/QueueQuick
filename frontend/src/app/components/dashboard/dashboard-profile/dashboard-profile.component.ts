@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PocketbaseService } from '../../../services/pocketbase/pocketbase.service';
 import { Router } from '@angular/router';
 import { RouteURLService } from '../../../services/route-constants/route-url.service';
@@ -10,7 +10,7 @@ import { channels_enabled, email } from '../../../models/channels';
   templateUrl: './dashboard-profile.component.html',
   styleUrl: './dashboard-profile.component.scss'
 })
-export class DashboardProfileComponent {
+export class DashboardProfileComponent implements OnInit {
 
   public email: string = '';
   public username: string = '';
@@ -18,6 +18,9 @@ export class DashboardProfileComponent {
   public email_settings: email = this.getDefaultEmail();
 
   public channel_enabled: channels_enabled = {
+    email: ''
+  }
+  public channel_active: channels_enabled = {
     email: ''
   }
 
@@ -77,6 +80,7 @@ export class DashboardProfileComponent {
 
               const config = await this.pb.get().collection('channels_config').getFirstListItem(`user = '${this.pb.returnModelData('id')}' && channel = '${record.id}'`)
               this.email_settings = config['config']
+              this.channel_active.email = config.id;
             }
         }
       })
@@ -108,7 +112,8 @@ export class DashboardProfileComponent {
       if (existingRecord.length > 0) {
         await this.pb.get().collection('channels_config').update(existingRecord[0].id, data);
       } else {
-        await this.pb.get().collection('channels_config').create(data);
+        const result = await this.pb.get().collection('channels_config').create(data);
+        this.channel_active.email = result.id;
       }
 
 
@@ -141,6 +146,7 @@ export class DashboardProfileComponent {
       this.email_settings = this.getDefaultEmail();
 
       this.snackBar.open('Deleted Email data successfully.', 'Close', { duration: 5000 })
+      this.channel_active.email = '';
     } catch (error) {
       this.snackBar.open('Couldnt delete email settings', 'Close', { duration: 5000 })
     }

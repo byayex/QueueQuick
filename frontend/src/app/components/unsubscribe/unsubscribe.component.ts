@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PocketbaseService } from '../../services/pocketbase/pocketbase.service';
 import { RouteURLService } from '../../services/route-constants/route-url.service';
@@ -8,7 +8,7 @@ import { RouteURLService } from '../../services/route-constants/route-url.servic
   templateUrl: './unsubscribe.component.html',
   styleUrl: './unsubscribe.component.scss'
 })
-export class UnsubscribeComponent {
+export class UnsubscribeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private pb: PocketbaseService, private router: Router, private routeConst: RouteURLService) { }
 

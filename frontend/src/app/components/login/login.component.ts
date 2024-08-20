@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PocketbaseService } from '../../services/pocketbase/pocketbase.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,7 +9,7 @@ import { RouteURLService } from '../../services/route-constants/route-url.servic
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   constructor(private pb: PocketbaseService, private router: Router, private snackBar: MatSnackBar, private routeUrl: RouteURLService){}
 

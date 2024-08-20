@@ -1,12 +1,14 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PocketbaseService } from '../../services/pocketbase/pocketbase.service';
+import { Router } from '@angular/router';
+import { RouteURLService } from '../../services/route-constants/route-url.service';
 
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
   private selectedNavItem = '';
 
@@ -15,7 +17,7 @@ export class DashboardComponent {
   public highlightWidth = '0px';
   public highlightLeft = '0px';
 
-  constructor(public pb: PocketbaseService) { }
+  constructor(public pb: PocketbaseService, private router: Router, private routeUrl: RouteURLService) { }
 
   ngOnInit(): void {
     const storedNavItem = localStorage.getItem('selectedNavItem') ?? 'dashboard';

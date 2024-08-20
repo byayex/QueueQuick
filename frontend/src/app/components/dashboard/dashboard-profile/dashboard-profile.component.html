@@ -25,10 +25,10 @@
     </div>
     <div class="channel_part">
       <mat-accordion>
-        <mat-expansion-panel hideToggle *ngIf="channel_enabled.email != ''">
+        <mat-expansion-panel hideToggle *ngIf="channel_enabled.email !== ''">
           <mat-expansion-panel-header>
             <mat-panel-title [ngStyle]="{ 'font-family': 'LibreFranklin'}">
-              Email Settings {{ compareJsonObjects(email_settings, getDefaultEmail()) ? '(not active)' : '(active)' }}
+              Email Settings {{ channel_active.email === '' ? '(not active)' : '(active)' }}
             </mat-panel-title>
             <mat-panel-description [ngStyle]="{ 'font-family': 'LibreFranklin'}">
               Opening this in presence of others may expose sensitive data!

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PocketbaseService } from '../../../services/pocketbase/pocketbase.service';
 import { RecordModel } from 'pocketbase';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './dashboard-campaigns.component.html',
   styleUrl: './dashboard-campaigns.component.scss'
 })
-export class DashboardCampaignsComponent {
+export class DashboardCampaignsComponent implements OnInit {
 
   public data: RecordModel[] = []
   public displayedColumns = ['title', 'description', 'current_entries', 'active', 'manage']

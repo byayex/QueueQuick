@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnInit, OnChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { PocketbaseService } from '../../services/pocketbase/pocketbase.service';
@@ -9,7 +9,7 @@ import { RecordModel } from 'pocketbase';
   templateUrl: './iframe.component.html',
   styleUrl: './iframe.component.scss'
 })
-export class IframeComponent {
+export class IframeComponent implements OnInit, OnChanges {
 
   @Input() campaign: string = ''
   @Input() showTitle: boolean = true;
@@ -53,6 +53,7 @@ export class IframeComponent {
 
     if (localStorage.getItem(this.campaign)) {
       this.currentStep = 3;
+      this.initialLoading = false;
       return;
     }
 
@@ -153,5 +154,12 @@ export class IframeComponent {
         this.currentStep = 0;
       }, 15_000)
     }
+  }
+
+  getFormFieldStyles() {
+    return {
+      '--mdc-filled-text-field-focus-active-indicator-color': this.buttonColor + ' !important',
+      '--mdc-filled-text-field-focus-label-text-color': this.buttonColor + ' !important'
+    };
   }
 }

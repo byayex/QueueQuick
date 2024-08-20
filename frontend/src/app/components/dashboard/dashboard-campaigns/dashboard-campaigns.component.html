@@ -60,9 +60,9 @@
       <mat-slide-toggle class="toggle" [(ngModel)]="active">Active</mat-slide-toggle>
 
       <button mat-raised-button (click)="submitClick()" class="actionbuttons">
-        {{currentSelectedId != '' ? 'Edit' : 'Create new'}} campaign
+        {{currentSelectedId !== '' ? 'Edit' : 'Create new'}} campaign
       </button>
-      <button mat-raised-button (click)="abortEdit()" class="actionbuttons" [ngClass]="{'hidden': currentSelectedId == ''}">
+      <button mat-raised-button (click)="abortEdit()" class="actionbuttons" [ngClass]="{'hidden': currentSelectedId === ''}">
         Abort Edit
       </button>
     </div>

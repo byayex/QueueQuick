@@ -1,18 +1,19 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { RecordModel } from 'pocketbase';
 import { PocketbaseService } from '../../../services/pocketbase/pocketbase.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../../environments/environment';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dashboard-designer',
   templateUrl: './dashboard-designer.component.html',
   styleUrl: './dashboard-designer.component.scss'
 })
-export class DashboardDesignerComponent {
+export class DashboardDesignerComponent implements OnInit {
 
-  constructor(private pb: PocketbaseService, private snackBar: MatSnackBar, private clipboard: Clipboard) {
+  constructor(private pb: PocketbaseService, private snackBar: MatSnackBar, private clipboard: Clipboard, private router: Router) {
     this.updateUI();
   }
 
@@ -100,7 +101,7 @@ export class DashboardDesignerComponent {
     this._link = value;
   }
 
-  public readonly templateLink: string = environment.url;
+  public readonly templateLink: string = `${ window.location.protocol}//${window.location.host}`;
 
   async ngOnInit() {
 
