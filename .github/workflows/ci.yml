@@ -11,6 +11,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
     - name: Checkout repository
@@ -19,12 +22,12 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    - name: Log in to Custom Docker Registry
+    - name: Log in to GitHub Container Registry
       uses: docker/login-action@v2
       with:
-        registry: ${{ secrets.REGISTRY_URL }}
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Determine Docker tag
       id: docker_tag
@@ -38,13 +41,14 @@ jobs:
 
     - name: Build and Push Docker images
       env:
-        REGISTRY_URL: ${{ secrets.REGISTRY_URL }}
+        REGISTRY: ghcr.io
         IMAGE_TAG: ${{ env.tag }}
+        REPO_NAME: ${{ github.repository_owner }}/QueueQuick
       run: |
         # Build frontend
-        docker build -t $REGISTRY_URL/queuequick-frontend:${IMAGE_TAG} ./frontend
-        docker push $REGISTRY_URL/queuequick-frontend:${IMAGE_TAG}
+        docker build -t $REGISTRY/$REPO_NAME-frontend:${IMAGE_TAG} ./frontend
+        docker push $REGISTRY/$REPO_NAME-frontend:${IMAGE_TAG}
 
         # Build backend
-        docker build -t $REGISTRY_URL/queuequick-backend:${IMAGE_TAG} ./backend
-        docker push $REGISTRY_URL/queuequick-backend:${IMAGE_TAG}
+        docker build -t $REGISTRY/$REPO_NAME-backend:${IMAGE_TAG} ./backend
+        docker push $REGISTRY/$REPO_NAME-backend:${IMAGE_TAG}
