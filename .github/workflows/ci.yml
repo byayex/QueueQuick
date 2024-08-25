@@ -43,7 +43,7 @@ jobs:
       env:
         REGISTRY: ghcr.io
         IMAGE_TAG: ${{ env.tag }}
-        REPO_NAME: ${{ github.repository_owner }}/QueueQuick
+        REPO_NAME: ${{ github.repository_owner }}/queuequick
       run: |
         # Build frontend
         docker build -t $REGISTRY/$REPO_NAME-frontend:${IMAGE_TAG} ./frontend
