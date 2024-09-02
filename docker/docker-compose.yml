@@ -1,13 +1,13 @@
 services:
   frontend:
-    image: docker.pasi1337.de/docker-hosted/queuequick-frontend:main
+    image: ghcr.io/byayex/queuequick-frontend:main
     expose:
       - "8080"
     networks:
       - proxy_network
 
   backend:
-    image: docker.pasi1337.de/docker-hosted/queuequick-backend:main
+    image: ghcr.io/byayex/queuequick-backend:main
     expose:
       - "8090"
     networks:
