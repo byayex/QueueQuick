@@ -22,4 +22,4 @@ COPY --from=build /app/dist/queue-quick /app
 
 EXPOSE 8080
 
-CMD ["http-server", "/app", "-p", "8080"]
+CMD ["http-server", "/app", "-p", "8090"]
