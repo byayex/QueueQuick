@@ -21,6 +21,8 @@ export class IframeComponent implements OnInit, OnChanges {
   @Input() buttonTextColor: string = '#000000';
   @Input() buttonTxt: string = 'Join the Waitlist!';
 
+  @Input() isIFrame: boolean = false;
+
   public title: string = '';
   public description: string = '';
 
@@ -112,6 +114,16 @@ export class IframeComponent implements OnInit, OnChanges {
   }
 
   selectChannel(channel: RecordModel) {
+
+    if(this.isIFrame)
+    {
+      this.snackBar.open('You cant add someone to the waitinglist while being in the designer.', 'Close', { duration: 15_000})
+
+      this.currentStep = 0;
+
+      return;
+    }
+
     this.currentStep = 2;
     this.selectedChannel = channel;
   }
@@ -141,12 +153,13 @@ export class IframeComponent implements OnInit, OnChanges {
   }
 
   async onSubmit() {
+
     try {
       await this.pb.addSelfToCampaign(this.campaign, this.selectedChannel?.id ?? '', this.contactMethod);
 
       this.currentStep = 3;
 
-      localStorage.setItem(this.campaign, 'entry');
+      localStorage.removeItem(this.campaign);
 
     } catch (error) {
       this.currentStep = 4;

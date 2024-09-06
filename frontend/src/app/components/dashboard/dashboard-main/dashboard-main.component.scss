@@ -11,7 +11,26 @@
     width: 100%;
 
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+
     gap: 20px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card {
+    border-color: var(--secondary-50);
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+
+    h3 {
+        margin: 0;
+    }
+    h2 {
+        font-size: xx-large;
+        color: var(--secondary);
+        margin-left: 8px;
+    }
 }

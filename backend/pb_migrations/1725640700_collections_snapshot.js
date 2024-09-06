@@ -4,7 +4,7 @@ migrate((db) => {
     {
       "id": "g26pifh08bzdnfj",
       "created": "2024-05-07 12:10:08.724Z",
-      "updated": "2024-05-24 14:25:33.184Z",
+      "updated": "2024-09-06 16:37:14.591Z",
       "name": "campaigns",
       "type": "base",
       "system": false,
@@ -76,6 +76,20 @@ migrate((db) => {
             "max": null,
             "noDecimal": true
           }
+        },
+        {
+          "system": false,
+          "id": "pexq4psp",
+          "name": "messages_sent",
+          "type": "number",
+          "required": false,
+          "presentable": false,
+          "unique": false,
+          "options": {
+            "min": null,
+            "max": null,
+            "noDecimal": false
+          }
         }
       ],
       "indexes": [
@@ -91,7 +105,7 @@ migrate((db) => {
     {
       "id": "y2nxfqhq1hxqgkp",
       "created": "2024-05-07 12:16:55.856Z",
-      "updated": "2024-05-26 10:31:45.810Z",
+      "updated": "2024-08-11 17:52:27.280Z",
       "name": "channels",
       "type": "base",
       "system": false,
@@ -194,7 +208,7 @@ migrate((db) => {
     {
       "id": "p88kd0h93to5e3e",
       "created": "2024-05-13 09:55:45.774Z",
-      "updated": "2024-05-26 16:37:29.916Z",
+      "updated": "2024-08-11 17:52:27.281Z",
       "name": "channels_config",
       "type": "base",
       "system": false,
@@ -255,7 +269,7 @@ migrate((db) => {
     {
       "id": "qp2ztnt7bntpzt2",
       "created": "2024-05-13 11:39:23.489Z",
-      "updated": "2024-08-06 17:17:46.742Z",
+      "updated": "2024-08-11 17:52:27.281Z",
       "name": "entries",
       "type": "base",
       "system": false,
@@ -320,7 +334,7 @@ migrate((db) => {
     {
       "id": "_pb_users_auth_",
       "created": "2024-08-06 15:06:18.913Z",
-      "updated": "2024-08-06 15:08:05.694Z",
+      "updated": "2024-08-11 17:52:27.282Z",
       "name": "users",
       "type": "auth",
       "system": false,
