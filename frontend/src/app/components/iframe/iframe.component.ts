@@ -103,6 +103,12 @@ export class IframeComponent implements OnInit, OnChanges {
         filter += `id = "${channel}"`;
       });
 
+      if(filter.trim() === '')
+      {
+        this.availableChannels = undefined;
+        return;
+      }
+
       this.availableChannels = await this.pb.get().collection('channels').getFullList({ filter: filter });
     } catch (error) {
       this.snackBar.open('There was an error loading the channels. Please try again.', 'Close', { duration: 5000 })

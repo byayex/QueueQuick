@@ -1,0 +1,29 @@
+services:
+
+  traefik:
+    image: "traefik:v3.0"
+    container_name: "traefik"
+    restart: unless-stopped
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesResolvers.myresolver.acme.dnsChallenge=true"
+      - "--certificatesResolvers.myresolver.acme.email=example@mail.com"
+      - "--certificatesResolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesResolvers.myresolver.acme.dnsChallenge.provider=cloudflare"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    environment:
+      - "CF_DNS_API_TOKEN=Ddscsad1324Ddcs_dsa$42dsdsa"
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true
