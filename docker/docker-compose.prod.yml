@@ -3,7 +3,7 @@ services:
     image: ghcr.io/byayex/queuequick-frontend:main
     restart: unless-stopped
     expose:
-      - "8080"
+      - "80"
     networks:
       - proxy_network
     labels:
@@ -11,7 +11,7 @@ services:
       - "traefik.http.routers.frontend.rule=Host(`qq.pasi1337.de`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myresolver"
-      - "traefik.http.services.frontend.loadbalancer.server.port=8080"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
 
   backend:
     image: ghcr.io/byayex/queuequick-backend:main
@@ -26,6 +26,11 @@ services:
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls.certresolver=myresolver"
       - "traefik.http.services.backend.loadbalancer.server.port=8090"
+    volumes:
+      - backend_data:/pb/pb_data
+
+volumes:
+  backend_data:
 
 networks:
   proxy_network:
