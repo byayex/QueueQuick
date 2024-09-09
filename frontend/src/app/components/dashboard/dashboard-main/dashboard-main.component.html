@@ -14,6 +14,31 @@
       <h2>{{totalMessages}}</h2>
     </div>
     <div class="card">
+      <h3>Credits</h3>
+      <h2>Coming soon!</h2>
+    </div>
+    <div class="message_card">
+      <h3>Send new notification</h3>
+      <mat-form-field>
+        <mat-label>Select campaign</mat-label>
+        <mat-select matNativeControl [(value)]="selectedCampaign">
+          <mat-option *ngFor="let element of campaigns" (click)="newSelect(element.id)" [value]="element.id">{{ element['title'] }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      @if(selectedCampaign !== '') {
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-label>Subject</mat-label>
+          <input matInput maxlength="60" required [(ngModel)]="subject">
+        </mat-form-field>
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-label>Message</mat-label>
+          <textarea matInput maxlength="300" required rows="4" [(ngModel)]="message"></textarea>
+        </mat-form-field>
+        <mat-slide-toggle class="toggle" labelPosition="after" [(ngModel)]="securityTask">I acknowledge that the message I specified above will be distributed to all entries in the database.</mat-slide-toggle>
+        <button mat-raised-button class="submit_button" (click)="sendNotifications()">
+          Send messages to all entries
+        </button>
+      }
     </div>
   </div>
 </dashboard-template>

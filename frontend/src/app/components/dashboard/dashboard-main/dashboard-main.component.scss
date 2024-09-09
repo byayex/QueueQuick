@@ -12,11 +12,17 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 4fr;
 
     gap: 20px;
     padding: 20px;
     box-sizing: border-box;
+
+    overflow-y: scroll;
+}
+
+.submit_button {
+    background-color: var(--secondary-50) !important;
 }
 
 .card {
@@ -33,4 +39,41 @@
         color: var(--secondary);
         margin-left: 8px;
     }
+}
+
+.message_card {
+    border-color: var(--secondary-50);
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    grid-column: span 4;
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+    }
+
+    mat-form-field {
+        grid-area: select;
+        height: fit-content;
+        width: 50%;
+    }
+
+    button {
+        width: 50%;
+    }
+}
+
+::ng-deep .mdc-label {
+    font-family: LibreFranklin !important;
+}
+input {
+    font-family: LibreFranklin;
+}
+mat-label {
+    font-family: LibreFranklin;
 }

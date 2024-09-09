@@ -123,7 +123,7 @@ export class IframeComponent implements OnInit, OnChanges {
 
     if(this.isIFrame)
     {
-      this.snackBar.open('You cant add someone to the waitinglist while being in the designer.', 'Close', { duration: 15_000})
+      this.snackBar.open('You cant add someone to the waitinglist while being in the designer.', 'Close', { duration: 5_000})
 
       this.currentStep = 0;
 
