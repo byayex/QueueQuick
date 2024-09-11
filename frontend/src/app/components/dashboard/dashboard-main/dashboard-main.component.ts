@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PocketbaseService } from '../../../services/pocketbase/pocketbase.service';
 import { RecordModel } from 'pocketbase';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './dashboard-main.component.html',
   styleUrl: './dashboard-main.component.scss'
 })
-export class DashboardMainComponent {
+export class DashboardMainComponent implements OnInit {
 
   public totalCampaigns: number = 0;
   public totalEntries: number = 0;
@@ -28,7 +28,7 @@ export class DashboardMainComponent {
   async ngOnInit() {
 
     try {
-      var data = await this.pb.get().collection('campaigns').getFullList({
+      const data = await this.pb.get().collection('campaigns').getFullList({
         sort: '-created',
       });
 
@@ -36,8 +36,8 @@ export class DashboardMainComponent {
       this.campaigns = data;
 
       data.forEach((record) => {
-        var currentEntries = record['current_entries'] as number;
-        var messagesSent = record['messages_sent'] as number;
+        const currentEntries = record['current_entries'] as number;
+        const messagesSent = record['messages_sent'] as number;
 
         this.totalEntries += currentEntries;
         this.totalMessages += messagesSent;
@@ -69,9 +69,9 @@ export class DashboardMainComponent {
 
     try {
       this.pb.sendNotification(this.selectedCampaign, this.subject, this.message)
-      this.snackBar.open('We started to send the notification.', 'Close', { duration: 5000 })
+      this.snackBar.open('We started to send the notifications.', 'Close', { duration: 5000 })
     } catch (error) {
-      this.snackBar.open('An error occured. Please try again later or contact the support.', 'Close', { duration: 5000 })
+      this.snackBar.open('An error occurred. Please try again later or contact the support.', 'Close', { duration: 5000 })
     }
 
   }

@@ -77,7 +77,7 @@ export class DashboardCampaignsComponent implements OnInit {
 
       this.ngOnInit();
     } catch (error: any) {
-      this.snackBar.open(`An error occured while ${this.currentSelectedId == '' ? 'creating' : 'editing'} a campaign.`, 'Close', { duration: 5000 })
+      this.snackBar.open(`An error occurred while ${this.currentSelectedId == '' ? 'creating' : 'editing'} a campaign.`, 'Close', { duration: 5000 })
     }
   }
 
@@ -87,7 +87,7 @@ export class DashboardCampaignsComponent implements OnInit {
       this.snackBar.open('The campaign got deleted', 'Close', { duration: 5000 })
       this.ngOnInit();
     } catch (error: any) {
-      this.snackBar.open('An error occured while deleting the campaign.', 'Close', { duration: 5000 })
+      this.snackBar.open('An error occurred while deleting the campaign.', 'Close', { duration: 5000 })
     }
   }
 
