@@ -7,7 +7,7 @@ import { RecordModel } from 'pocketbase';
 @Component({
   selector: 'iframe-comp',
   templateUrl: './iframe.component.html',
-  styleUrl: './iframe.component.scss'
+  styleUrl: './iframe.component.scss',
 })
 export class IframeComponent implements OnInit, OnChanges {
 
@@ -37,7 +37,7 @@ export class IframeComponent implements OnInit, OnChanges {
   public contactMethod: string = '';
 
   public initialLoading: boolean = true;
-  public campaginExists: boolean = true;
+  public campaignExists: boolean = true;
 
   constructor(private route: ActivatedRoute, private snack: MatSnackBar, public pb: PocketbaseService, private snackBar: MatSnackBar, ) { }
 
@@ -83,7 +83,7 @@ export class IframeComponent implements OnInit, OnChanges {
 
     } catch (error) {
       this.snack.open('The campaign does not exist.', 'Close', { duration: 5000 })
-      this.campaginExists = false;
+      this.campaignExists = false;
     } finally {
       this.textLoading = false;
     }

@@ -1,7 +1,7 @@
 <div class="main" [ngStyle]="{ 'background-color': backgroundColor }">
     @if(!initialLoading) {
 
-    @if(campaginExists) {
+    @if(campaignExists) {
     <div class="step" *ngIf="currentStep === 0">
         <h2 *ngIf="showTitle" [ngStyle]="{ 'color': textColor }">{{title}}</h2>
         <p *ngIf="showDescription" [ngStyle]="{ 'color': textColor }">{{description}}</p>
