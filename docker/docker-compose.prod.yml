@@ -8,7 +8,7 @@ services:
       - proxy_network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`qq.pasi1337.de`)"
+      - "traefik.http.routers.frontend.rule=Host(`frontend.example.de`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myresolver"
       - "traefik.http.services.frontend.loadbalancer.server.port=80"
@@ -22,7 +22,7 @@ services:
       - proxy_network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`qq-api.pasi1337.de`)"
+      - "traefik.http.routers.backend.rule=Host(`api.example.de`)"
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls.certresolver=myresolver"
       - "traefik.http.services.backend.loadbalancer.server.port=8090"

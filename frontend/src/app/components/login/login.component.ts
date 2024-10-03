@@ -3,6 +3,7 @@ import { PocketbaseService } from '../../services/pocketbase/pocketbase.service'
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouteURLService } from '../../services/route-constants/route-url.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'login',
@@ -24,8 +25,16 @@ export class LoginComponent implements OnInit {
 
   async login() {
     try {
-      await this.pb.get().collection('users').authWithOAuth2({ provider: 'google' });
-      this.router.navigate([this.routeUrl.dashboard()])
+
+      if (environment.production) {
+        // Prod Login
+        await this.pb.get().collection('users').authWithOAuth2({ provider: 'google' });
+      } else {
+        // Debug Login
+        await this.pb.get().collection('users').authWithPassword('admin@admin.admin', 'users79141');
+      }
+
+      this.router.navigate([this.routeUrl.dashboard()]);
     } catch (error) {
       console.error(error)
       this.snackBar.open('Login was not successful. Please try again.', 'Close', { duration: 5000 });

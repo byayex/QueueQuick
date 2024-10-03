@@ -27,7 +27,7 @@
             "args": [
                 "-NoProfile",
                 "-ExecutionPolicy", "Bypass",
-                "-Command", "cd frontend; if ($?) { npx ng serve -o }"
+                "-Command", "cd frontend; if ($?) { npx ng serve }"
             ],
             "problemMatcher": [],
             "presentation": {
