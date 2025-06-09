@@ -4,6 +4,14 @@ Welcome to the QueueQuick repository! QueueQuick is a SaaS project aimed at prov
 
 ## Getting Started
 
+Use
+
+```bash
+npm install --legacy-peer-deps
+```
+
+to install the frontend npm packages
+
 ### Backend
 
 To start the backend, use the following commands:

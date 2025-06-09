@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         await this.pb.get().collection('users').authWithOAuth2({ provider: 'google' });
       } else {
         // Debug Login
-        await this.pb.get().collection('users').authWithPassword('admin@admin.admin', 'users79141');
+        await this.pb.get().collection('users').authWithPassword('admin@admin.admin', 'admin@admin.admin');
       }
 
       this.router.navigate([this.routeUrl.dashboard()]);
